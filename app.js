@@ -24,4 +24,4 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.use('/api/user', routes);
-app.listen(prosecc.env.PORT, () => console.log(`App running on port number ${process.env,PORT}`))
+app.listen(process.env.PORT, () => console.log(`App running on port number ${process.env.PORT}`))

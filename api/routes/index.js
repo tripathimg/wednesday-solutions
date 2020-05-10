@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const userController = require('./../controllers/user.js')
 const vehicleController = require('./../controllers/vehicle.js')
 const bookingController = require('./../controllers/booking.js')
 
