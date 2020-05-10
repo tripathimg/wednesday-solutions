@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const vehicleController = require('./../controllers/vehicle.js')
 const bookingController = require('./../controllers/booking.js')
+const userController = require('../controllers/users.js')
+
+router.get('/user', userController.getUser);
+router.get('/user/:uid', userController.getUserByUid);
 
 /**
  * @swagger
@@ -31,7 +35,7 @@ const bookingController = require('./../controllers/booking.js')
  *       200:
  *         description: nearby vehicle
  */
-router.get('/nearby/vehicle', vehicleController.getNearbyVehicle);
+router.get('/user/nearby/vehicle', vehicleController.getNearbyVehicle);
 
 /**
  * @swagger
@@ -51,7 +55,7 @@ router.get('/nearby/vehicle', vehicleController.getNearbyVehicle);
  *       200:
  *         description: User past bookings
  */
-router.get('/bookings', bookingController.getUserBookings);
+router.get('/user/bookings', bookingController.getUserBookings);
 
 /**
  * @swagger
@@ -96,6 +100,6 @@ router.get('/bookings', bookingController.getUserBookings);
  *       200:
  *         description: request vehicle booking
  */
-router.post('/vehicle/request', bookingController.bookVehicle);
+router.post('/user/vehicle/request', bookingController.bookVehicle);
 
 module.exports = router;
