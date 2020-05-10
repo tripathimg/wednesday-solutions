@@ -1,6 +1,6 @@
 {
   "development": {
-      "url": "mysql://root:Maahi@47@localhost/temp_dev",
+      "url": "mysql://root:password@localhost/temp_dev",
       "logging": true,
       "options": {
           "dialect": "mysql",
