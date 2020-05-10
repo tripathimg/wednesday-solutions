@@ -11,4 +11,4 @@ mysql -uroot -ppassword -D temp_dev -e "DROP DATABASE temp_dev"
 echo "**************************npx sequelize db:create**************************" && npx sequelize db:create && echo "**************************npx sequelize db:migrate**************************" && npx sequelize db:migrate && echo "**************************npx sequelize db:seed:all**************************" && npx sequelize db:seed:all 
 
 # Start
-npm start
+#npm start
