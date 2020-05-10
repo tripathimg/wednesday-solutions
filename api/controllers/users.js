@@ -2,7 +2,7 @@ const userModel = require('../models/users')
 
 const getUserByUid = function (req, res) {
     const uid = req.params.uid;
-
+console.log("user id", uid);
     userModel.findOneUser(uid)
         .then(data => {
             if (!data) {

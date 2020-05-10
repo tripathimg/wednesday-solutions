@@ -21,8 +21,9 @@ const vehicleSchema = sequelize.define('vehicle_details', {
 
 module.exports.vehicleModel = vehicleSchema;
 
-const getNearbyVehicle = async (lat, lng, dist) => {
-   
+const getNearbyVehicle = async (lat, lng, dist, page, limit) => {
+    let start = (page - 1) * limit;
+
    return sequelize.query(`SELECT id, vmodel, vnum, curr_lat, curr_lng,
     (
        6371 *
@@ -35,7 +36,7 @@ const getNearbyVehicle = async (lat, lng, dist) => {
     ) AS distance 
     FROM vehicle_details
     HAVING distance < ${dist}
-    ORDER BY distance LIMIT 0, 20`, { type: sequelize.QueryTypes.SELECT })
+    ORDER BY distance LIMIT ${start}, ${limit}`, { type: sequelize.QueryTypes.SELECT })
     .then(records => {
         let recordList = [];
         records.map(record => recordList.push(record));

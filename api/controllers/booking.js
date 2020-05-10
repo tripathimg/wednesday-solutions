@@ -1,9 +1,11 @@
 const bookingModel = require('../models/booking')
 
 const getUserBookings = function (req, res) {
-    const { uid } = req.query;
-    
-    bookingModel.getUserBookings(uid)
+    let { uid, page, limit } = req.query;
+    page = page || 1;
+    limit = limit || 20;
+
+    bookingModel.getUserBookings(uid, page, limit)
         .then(data => {
             if (!data) {
                 return res.status(422).send({ status: 0, message: "Something went wrong", data: { result: [] }, });

@@ -4,7 +4,48 @@ const vehicleController = require('./../controllers/vehicle.js')
 const bookingController = require('./../controllers/booking.js')
 const userController = require('../controllers/users.js')
 
+/**
+ * @swagger
+ *
+ * /api/user:
+ *   get:
+ *     description: Get nearby Vehicle
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: page
+ *         description: Page number.
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: limit
+ *         description: Limit.
+ *         in: query
+ *         required: false
+ *         type: integer 
+ *     responses:
+ *       200:
+ *         description: List of users
+ */
 router.get('/user', userController.getUser);
+
+/**
+ * @swagger
+ *
+ * /api/user/{uid}:
+ *   get:
+ *     description: Get nearby Vehicle
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - in: path
+ *         name: uid
+ *         required: true
+ *         type: integer
+ *     responses:
+ *       200:
+ *         description:  particular user
+ */
 router.get('/user/:uid', userController.getUserByUid);
 
 /**
@@ -31,6 +72,16 @@ router.get('/user/:uid', userController.getUserByUid);
  *         in: query
  *         required: true
  *         type: string
+ *       - name: page
+ *         description: Page number.
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: limit
+ *         description: Limit.
+ *         in: query
+ *         required: false
+ *         type: integer 
  *     responses:
  *       200:
  *         description: nearby vehicle
@@ -40,7 +91,7 @@ router.get('/user/nearby/vehicle', vehicleController.getNearbyVehicle);
 /**
  * @swagger
  *
- * /api/user/bookings:
+ * /api/user/vehicle/bookings:
  *   get:
  *     description: Get User Bookings
  *     produces:
@@ -51,11 +102,21 @@ router.get('/user/nearby/vehicle', vehicleController.getNearbyVehicle);
  *         in: query
  *         required: true
  *         type: integer
+ *       - name: page
+ *         description: Page number.
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: limit
+ *         description: Limit.
+ *         in: query
+ *         required: false
+ *         type: integer 
  *     responses:
  *       200:
  *         description: User past bookings
  */
-router.get('/user/bookings', bookingController.getUserBookings);
+router.get('/user/vehicle/bookings', bookingController.getUserBookings);
 
 /**
  * @swagger

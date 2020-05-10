@@ -28,15 +28,14 @@ const bookingSchema = sequelize.define('booking_details', {
 
 module.exports.bookingModel = bookingSchema;
 
-const getUserBookings = async (uid) => {
+const getUserBookings = async (uid, page, limit) => {
     let whrCondition = {};
     whrCondition.uid = uid;
 
     return bookingSchema.findAll({
         where: whrCondition,
-        order: [
-            ['id', 'DESC']
-        ],
+        offset: (page - 1) * limit,
+        limit: limit
     }).then(records => {
         let recordList = [];
         records.map(record => recordList.push(record.dataValues));
