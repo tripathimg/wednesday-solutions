@@ -17,7 +17,21 @@
  
 - Run ``` ./setup-local.sh ```
 - This will seed the data in mysql. 
-- Run ``` pm2 start ecosystem.config.js ``
+- Add .env file in root with below parameters and update values.
+ 
+ ### Sample .env file variables
+ NODE_ENV=developement
+ DB_NAME= temp_dev
+ DB_USERNAME= root
+ DB_PASSWORD= "password"
+ DB_HOST= "localhost"
+ DB_PORT= 3306
+ PORT = 9001
+ TEST_PORT = 9002
+
+- Run ``` pm2 start app.js ``
+- For testing run `` npm test ``
+- See api documentation on ``` http://localhost:9001[port]/api-docs ``` after running server.
 
 
 ### Auto Generate models from database
