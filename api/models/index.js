@@ -9,10 +9,14 @@ let sequelize;
 if (process.env.NODE_ENV === 'test') {
     sequelize = new SequelizeMock();
 } else {
-    sequelize = new Sequelize(
-        process.env.DB_URI,
-        JSON.parse(process.env.DB_OPTIONS)
-    );
+    sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+        host: process.env.DB_HOST,
+        dialect: 'mysql',
+        migrationStorageTableName: "sequelize_migrations",
+        define: {
+          timestamps: false
+        }
+      });
 }
 
 fs.readdirSync(__dirname)
